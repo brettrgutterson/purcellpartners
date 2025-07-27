@@ -29,5 +29,12 @@ namespace PurcellPartners.Common.OutputHandling
 
             Console.WriteLine(processingMessage);
         }
+
+        public void WriteMissingNumbersList(string missingNumbersCSVList)
+        {
+            var missingNumbersListMessage = $"The following missing numbers were detected: {missingNumbersCSVList}";
+
+            Console.WriteLine(missingNumbersListMessage);
+        }
     }
 }

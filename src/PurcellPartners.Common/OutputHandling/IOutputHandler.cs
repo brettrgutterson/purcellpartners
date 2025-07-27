@@ -11,5 +11,7 @@ namespace PurcellPartners.Common.OutputHandling
         void WriteListPromptMessage();
 
         void WriteProcessingMessage();
+
+        void WriteMissingNumbersList(string missingNumbersCSVList);
     }
 }

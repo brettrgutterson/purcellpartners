@@ -38,7 +38,7 @@ namespace PurcellPartners.Common.Application
 
             var missingNumbers = await DetectMissingNumbers(inputList);
 
-            Console.WriteLine(string.Join(", ", missingNumbers));
+            _OutputHandler.WriteMissingNumbersList(string.Join(", ", missingNumbers));
 
             Console.ReadLine();
         }
