@@ -35,9 +35,7 @@ namespace PurcellPartners.Common.Application
 
             var inputList = await RetrieveInputList(input);
 
-            var orderedList = await OrderInputList(inputList);
-
-            var missingNumbers = await DetectMissingNumbers(inputList);
+            var missingNumbers = _ListProcessor.DetectMissingNumbers(inputList);
 
             var missingNumbersCSVList = _ListProcessor.GetMissingNumberCSVList(missingNumbers);
 
@@ -60,15 +58,6 @@ namespace PurcellPartners.Common.Application
             var returnList = input.Split(',').Select(p => int.Parse(p.Trim())).ToList();
 
             return Task.FromResult(returnList);
-        }
-
-        public Task<List<int>> OrderInputList(List<int> inputList) => Task.FromResult(inputList.OrderBy(n => n).ToList());
-
-        public Task<List<int>> DetectMissingNumbers(List<int> inputList)
-        {
-            var fullRangeOfNumbers = Enumerable.Range(inputList.Min(), inputList.Max() - inputList.Min() + 1);
-            var missing = fullRangeOfNumbers.Except(inputList).ToList();
-            return Task.FromResult(missing);
         }
     }
 }
