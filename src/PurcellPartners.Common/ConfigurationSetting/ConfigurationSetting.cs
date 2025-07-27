@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace PurcellPartners.Common.ConfigurationSetting
 {
+    /// <summary>
+    /// A configuration setting is used to hold a key/value pair
+    /// </summary>
     public class ConfigurationSetting
     {
         public required string Key { get; set; }
