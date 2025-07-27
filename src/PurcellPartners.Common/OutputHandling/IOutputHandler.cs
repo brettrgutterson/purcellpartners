@@ -10,6 +10,8 @@ namespace PurcellPartners.Common.OutputHandling
     {
         void WriteListPromptMessage();
 
+        void WriteInvalidInputMessage();
+
         void WriteProcessingMessage();
 
         void WriteMissingNumbersList(string missingNumbersCSVList);

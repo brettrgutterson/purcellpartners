@@ -23,6 +23,13 @@ namespace PurcellPartners.Common.OutputHandling
             Console.Write($"{promptMessage}:");
         }
 
+        public void WriteInvalidInputMessage()
+        {
+            var invalidInputMessage = _ConfigurationSettingManager.GetValueByKey("InvalidInputDetected") ?? "Invalid input detected. Input must be a CSV list of integers";
+
+            Console.WriteLine(invalidInputMessage);
+        }
+
         public void WriteProcessingMessage()
         {
             var processingMessage = _ConfigurationSettingManager.GetValueByKey("ProcessingStarted") ?? "Please wait while we process your request";

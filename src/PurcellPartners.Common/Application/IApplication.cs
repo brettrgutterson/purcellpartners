@@ -9,7 +9,5 @@ namespace PurcellPartners.Common.Application
     public interface IApplication
     {
         void Execute();
-
-        Task<bool> ValidateInput(string input);
     }
 }

@@ -28,30 +28,31 @@ namespace PurcellPartners.Common.Application
 
         public async void Execute()
         {
-            _OutputHandler.WriteListPromptMessage();
+            string input;
+            bool isValid;
 
-            var input = _InputHandler.RetrieveUserInput();
+            do
+            {
+                _OutputHandler.WriteListPromptMessage();
+                input = _InputHandler.RetrieveUserInput();
+                isValid = _InputHandler.IsInputValid(input);
+
+                if (!isValid)
+                {
+                    _OutputHandler.WriteInvalidInputMessage();
+                }
+            }
+            while (!isValid);
 
             _OutputHandler.WriteProcessingMessage();
 
             var inputList = _ListProcessor.RetrieveInputList(input);
-
             var missingNumbers = _ListProcessor.DetectMissingNumbers(inputList);
-
             var missingNumbersCSVList = _ListProcessor.GetMissingNumberCSVList(missingNumbers);
 
             _OutputHandler.WriteMissingNumbersList(missingNumbersCSVList);
 
             Console.ReadLine();
-        }
-
-        public Task<bool> ValidateInput(string input)
-        {
-            var parts = input.Split(',');
-            
-            var validationResult = parts.All(p => int.TryParse(p.Trim(), out _));
-
-            return Task.FromResult(validationResult);
         }
     }
 }

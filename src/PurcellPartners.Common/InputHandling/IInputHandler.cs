@@ -9,5 +9,7 @@ namespace PurcellPartners.Common.InputHandling
     public interface IInputHandler
     {
         string RetrieveUserInput();
+
+        bool IsInputValid(string input);
     }
 }
