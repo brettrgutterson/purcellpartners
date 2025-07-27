@@ -32,11 +32,9 @@ namespace PurcellPartners.Common.Application
 
             var input = _InputHandler.RetrieveUserInput();
 
-            var isInputValid = await ValidateInput(input);
-
             _OutputHandler.WriteProcessingMessage();
 
-            var inputList = await RetrieveInputList(input);
+            var inputList = _ListProcessor.RetrieveInputList(input);
 
             var missingNumbers = _ListProcessor.DetectMissingNumbers(inputList);
 
@@ -54,13 +52,6 @@ namespace PurcellPartners.Common.Application
             var validationResult = parts.All(p => int.TryParse(p.Trim(), out _));
 
             return Task.FromResult(validationResult);
-        }
-
-        public Task<List<int>> RetrieveInputList(string input)
-        {
-            var returnList = input.Split(',').Select(p => int.Parse(p.Trim())).ToList();
-
-            return Task.FromResult(returnList);
         }
     }
 }

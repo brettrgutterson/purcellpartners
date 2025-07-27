@@ -17,5 +17,7 @@ namespace PurcellPartners.Common.ListProcessing
         }
 
         public string GetMissingNumberCSVList(List<int> missingNumberList) => string.Join(", ", missingNumberList);
+
+        public List<int> RetrieveInputList(string input) => input.Split(',').Select(p => int.Parse(p.Trim())).ToList();
     }
 }

@@ -8,6 +8,8 @@ namespace PurcellPartners.Common.ListProcessing
 {
     public interface IListProcessor
     {
+        List<int> RetrieveInputList(string input);
+
         List<int> DetectMissingNumbers(List<int> inputList);
 
         string GetMissingNumberCSVList(List<int> missingNumberList);

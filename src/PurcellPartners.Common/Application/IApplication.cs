@@ -11,7 +11,5 @@ namespace PurcellPartners.Common.Application
         void Execute();
 
         Task<bool> ValidateInput(string input);
-
-        Task<List<int>> RetrieveInputList(string input);
     }
 }
