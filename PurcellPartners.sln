@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PurcellPartners", "src\Purc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PurcellPartners.Common", "src\PurcellPartners.Common\PurcellPartners.Common.csproj", "{428E13A8-20EB-42EE-99A6-799D15B57019}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E6811902-1644-4B0E-B456-D28E6F9E533D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PurcellPartners.UnitTests", "tests\PurcellPartners.UnitTests\PurcellPartners.UnitTests.csproj", "{6B6EA41D-4A4D-4DF3-8654-504CCAF96C49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,10 @@ Global
 		{428E13A8-20EB-42EE-99A6-799D15B57019}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{428E13A8-20EB-42EE-99A6-799D15B57019}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{428E13A8-20EB-42EE-99A6-799D15B57019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B6EA41D-4A4D-4DF3-8654-504CCAF96C49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B6EA41D-4A4D-4DF3-8654-504CCAF96C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B6EA41D-4A4D-4DF3-8654-504CCAF96C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B6EA41D-4A4D-4DF3-8654-504CCAF96C49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +38,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{30AB0149-0AEB-4E85-8F12-ADA25C422739} = {A295AF6C-4C9B-4FCA-94F3-B47CA6C7FB92}
 		{428E13A8-20EB-42EE-99A6-799D15B57019} = {A295AF6C-4C9B-4FCA-94F3-B47CA6C7FB92}
+		{6B6EA41D-4A4D-4DF3-8654-504CCAF96C49} = {E6811902-1644-4B0E-B456-D28E6F9E533D}
 	EndGlobalSection
 EndGlobal
