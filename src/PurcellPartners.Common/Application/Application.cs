@@ -35,11 +35,19 @@ namespace PurcellPartners.Common.Application
             {
                 _OutputHandler.WriteListPromptMessage();
                 input = _InputHandler.RetrieveUserInput();
+
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    _OutputHandler.WriteInvalidMessage();
+                    isValid = false;
+                    continue;
+                }
+
                 isValid = _InputHandler.IsInputValid(input);
 
                 if (!isValid)
                 {
-                    _OutputHandler.WriteInvalidInputMessage();
+                    _OutputHandler.WriteInvalidListMessage();
                 }
             }
             while (!isValid);

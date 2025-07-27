@@ -10,7 +10,9 @@ namespace PurcellPartners.Common.OutputHandling
     {
         void WriteListPromptMessage();
 
-        void WriteInvalidInputMessage();
+        void WriteInvalidMessage();
+
+        void WriteInvalidListMessage();
 
         void WriteProcessingMessage();
 
