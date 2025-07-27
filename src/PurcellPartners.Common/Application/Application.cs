@@ -22,18 +22,12 @@ namespace PurcellPartners.Common.Application
 
             var input = await PromptForInput(inputPrompt);
 
-            while (string.IsNullOrWhiteSpace(input))
-            {
-                var emptyInputDetectedMessage = _ConfigurationSettingManager.GetValueByKey("EmptyInputDetected") ?? "Input not detected. Please try again";
-
-                Console.WriteLine(emptyInputDetectedMessage);
-                Console.WriteLine();
-
-                input = await PromptForInput(inputPrompt);
-            }
+            var isInputValid = await ValidateInput(input);
 
             var processingMessage = _ConfigurationSettingManager.GetValueByKey("ProcessingStarted") ?? "Please wait while we process your request";
             Console.WriteLine(processingMessage);
+
+
 
             Console.ReadLine();
         }
@@ -45,6 +39,13 @@ namespace PurcellPartners.Common.Application
             return Task.FromResult(Console.ReadLine()?.Trim());
         }
 
+        public Task<bool> ValidateInput(string input)
+        {
+            var parts = input.Split(',');
+            
+            var validationResult = parts.All(p => int.TryParse(p.Trim(), out _));
 
+            return Task.FromResult(validationResult);
+        }
     }
 }

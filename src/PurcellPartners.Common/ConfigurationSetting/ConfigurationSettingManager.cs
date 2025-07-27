@@ -12,7 +12,8 @@ namespace PurcellPartners.Common.ConfigurationSetting
         {
             new ConfigurationSetting { Key = "InputPrompt", Value = "Please enter the input list" },
             new ConfigurationSetting { Key = "EmptyInputDetected", Value = "Input not detected. Please try again" },
-            new ConfigurationSetting { Key = "ProcessingStarted", Value = "Please wait while we process your request" }
+            new ConfigurationSetting { Key = "ProcessingStarted", Value = "Please wait while we process your request" },
+            new ConfigurationSetting { Key = "InvalidInputDetected", Value = "Invalid input detected. Input must be a CSV list of integers" }
         };
 
         public string? GetValueByKey(string key)

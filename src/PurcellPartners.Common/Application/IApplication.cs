@@ -11,5 +11,7 @@ namespace PurcellPartners.Common.Application
         void Execute();
 
         Task<string?> PromptForInput(string inputPrompt);
+
+        Task<bool> ValidateInput(string input);
     }
 }
