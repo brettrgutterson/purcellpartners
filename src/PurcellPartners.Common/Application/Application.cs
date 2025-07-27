@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using PurcellPartners.Common.ConfigurationSetting;
+using PurcellPartners.Common.InputHandling;
 using PurcellPartners.Common.ListProcessing;
 using PurcellPartners.Common.OutputHandling;
 
@@ -16,18 +17,20 @@ namespace PurcellPartners.Common.Application
     {
         private readonly IOutputHandler _OutputHandler;
         private readonly IListProcessor _ListProcessor;
+        private readonly IInputHandler _InputHandler;
 
-        public Application(IOutputHandler outputHandler, IListProcessor listProcessor)
+        public Application(IOutputHandler outputHandler, IListProcessor listProcessor, IInputHandler inputHandler)
         {
             _OutputHandler = outputHandler;
             _ListProcessor = listProcessor;
+            _InputHandler = inputHandler;
         }
 
         public async void Execute()
         {
             _OutputHandler.WriteListPromptMessage();
 
-            var input = Console.ReadLine().Trim();
+            var input = _InputHandler.RetrieveUserInput();
 
             var isInputValid = await ValidateInput(input);
 

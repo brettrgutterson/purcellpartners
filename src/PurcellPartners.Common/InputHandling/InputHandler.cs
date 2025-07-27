@@ -8,5 +8,6 @@ namespace PurcellPartners.Common.InputHandling
 {
     public class InputHandler : IInputHandler
     {
+        public string RetrieveUserInput() => Console.ReadLine().Trim();
     }
 }
