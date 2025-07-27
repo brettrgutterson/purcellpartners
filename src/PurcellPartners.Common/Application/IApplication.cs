@@ -17,5 +17,7 @@ namespace PurcellPartners.Common.Application
         Task<List<int>> RetrieveInputList(string input);
 
         Task<List<int>> OrderInputList(List<int> inputList);
+
+        Task<List<int>> DetectMissingNumbers(List<int> inputList);
     }
 }

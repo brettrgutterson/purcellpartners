@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using PurcellPartners.Common.ConfigurationSetting;
@@ -33,6 +34,10 @@ namespace PurcellPartners.Common.Application
 
             var orderedList = await OrderInputList(inputList);
 
+            var missingNumbers = await DetectMissingNumbers(inputList);
+
+            Console.WriteLine(string.Join(", ", missingNumbers));
+
             Console.ReadLine();
         }
 
@@ -60,5 +65,12 @@ namespace PurcellPartners.Common.Application
         }
 
         public Task<List<int>> OrderInputList(List<int> inputList) => Task.FromResult(inputList.OrderBy(n => n).ToList());
+
+        public Task<List<int>> DetectMissingNumbers(List<int> inputList)
+        {
+            var fullRangeOfNumbers = Enumerable.Range(inputList.Min(), inputList.Max() - inputList.Min() + 1);
+            var missing = fullRangeOfNumbers.Except(inputList).ToList();
+            return Task.FromResult(missing);
+        }
     }
 }
