@@ -8,6 +8,6 @@ namespace PurcellPartners.Common.ListProcessing
 {
     public class ListProcessor : IListProcessor
     {
-
+        public string GetMissingNumberCSVList(List<int> missingNumberList) => string.Join(", ", missingNumberList);
     }
 }

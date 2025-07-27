@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using PurcellPartners.Common.ConfigurationSetting;
+using PurcellPartners.Common.ListProcessing;
 using PurcellPartners.Common.OutputHandling;
 
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -13,13 +14,13 @@ namespace PurcellPartners.Common.Application
 {
     public class Application : IApplication
     {
-        private readonly ConfigurationSettingManager _ConfigurationSettingManager;
         private readonly IOutputHandler _OutputHandler;
+        private readonly IListProcessor _ListProcessor;
 
-        public Application(ConfigurationSettingManager configurationSettingManager, IOutputHandler outputHandler)
+        public Application(IOutputHandler outputHandler, IListProcessor listProcessor)
         {
-            _ConfigurationSettingManager = configurationSettingManager;
             _OutputHandler = outputHandler;
+            _ListProcessor = listProcessor;
         }
 
         public async void Execute()
@@ -38,7 +39,9 @@ namespace PurcellPartners.Common.Application
 
             var missingNumbers = await DetectMissingNumbers(inputList);
 
-            _OutputHandler.WriteMissingNumbersList(string.Join(", ", missingNumbers));
+            var missingNumbersCSVList = _ListProcessor.GetMissingNumberCSVList(missingNumbers);
+
+            _OutputHandler.WriteMissingNumbersList(missingNumbersCSVList);
 
             Console.ReadLine();
         }
