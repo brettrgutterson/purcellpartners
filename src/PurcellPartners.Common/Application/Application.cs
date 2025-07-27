@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using PurcellPartners.Common.ConfigurationSetting;
+using PurcellPartners.Common.OutputHandling;
 
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -13,17 +14,19 @@ namespace PurcellPartners.Common.Application
     public class Application : IApplication
     {
         private readonly ConfigurationSettingManager _ConfigurationSettingManager;
+        private readonly IOutputHandler _OutputHandler;
 
-        public Application(ConfigurationSettingManager configurationSettingManager)
+        public Application(ConfigurationSettingManager configurationSettingManager, IOutputHandler outputHandler)
         {
             _ConfigurationSettingManager = configurationSettingManager;
+            _OutputHandler = outputHandler;
         }
 
         public async void Execute()
         {
-            var inputPrompt = _ConfigurationSettingManager.GetValueByKey("InputPrompt") ?? "Please enter the input list";
+            _OutputHandler.WriteListPromptMessage();
 
-            var input = await PromptForInput(inputPrompt);
+            var input = Console.ReadLine().Trim();
 
             var isInputValid = await ValidateInput(input);
 
@@ -39,13 +42,6 @@ namespace PurcellPartners.Common.Application
             Console.WriteLine(string.Join(", ", missingNumbers));
 
             Console.ReadLine();
-        }
-
-        public Task<string?> PromptForInput(string inputPrompt)
-        {
-            Console.Write($"{inputPrompt}:");
-
-            return Task.FromResult(Console.ReadLine()?.Trim());
         }
 
         public Task<bool> ValidateInput(string input)
