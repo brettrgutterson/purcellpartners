@@ -8,6 +8,8 @@ namespace PurcellPartners.Common.Application
 {
     public interface IApplication
     {
-        bool TestMethod();
+        void Execute();
+
+        Task<string?> PromptForInput(string inputPrompt);
     }
 }

@@ -1,12 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PurcellPartners.Common.Application;
+using PurcellPartners.Common.ConfigurationSetting;
 
 var services = new ServiceCollection();
+
+services.AddSingleton<ConfigurationSettingManager>();
 services.AddTransient<IApplication, Application>();
+
 var serviceProvider = services.BuildServiceProvider();
 
-var app = serviceProvider.GetRequiredService<IApplication>();
-bool result = app.TestMethod();
-Console.WriteLine($"TestMethod returned: {result}");
+var _Application = serviceProvider.GetRequiredService<IApplication>();
 
-Console.ReadLine();
+_Application.Execute();
