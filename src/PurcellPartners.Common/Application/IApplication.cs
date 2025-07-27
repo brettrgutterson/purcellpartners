@@ -13,5 +13,7 @@ namespace PurcellPartners.Common.Application
         Task<string?> PromptForInput(string inputPrompt);
 
         Task<bool> ValidateInput(string input);
+
+        Task<List<int>> RetrieveInputList(string input);
     }
 }

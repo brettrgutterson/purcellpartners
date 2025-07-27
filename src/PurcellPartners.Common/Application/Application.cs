@@ -27,7 +27,7 @@ namespace PurcellPartners.Common.Application
             var processingMessage = _ConfigurationSettingManager.GetValueByKey("ProcessingStarted") ?? "Please wait while we process your request";
             Console.WriteLine(processingMessage);
 
-
+            var inputList = RetrieveInputList(input);
 
             Console.ReadLine();
         }
@@ -46,6 +46,13 @@ namespace PurcellPartners.Common.Application
             var validationResult = parts.All(p => int.TryParse(p.Trim(), out _));
 
             return Task.FromResult(validationResult);
+        }
+
+        public Task<List<int>> RetrieveInputList(string input)
+        {
+            var returnList = input.Split(',').Select(p => int.Parse(p.Trim())).ToList();
+
+            return Task.FromResult(returnList);
         }
     }
 }
