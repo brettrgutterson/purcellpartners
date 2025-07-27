@@ -30,8 +30,7 @@ namespace PurcellPartners.Common.Application
 
             var isInputValid = await ValidateInput(input);
 
-            var processingMessage = _ConfigurationSettingManager.GetValueByKey("ProcessingStarted") ?? "Please wait while we process your request";
-            Console.WriteLine(processingMessage);
+            _OutputHandler.WriteProcessingMessage();
 
             var inputList = await RetrieveInputList(input);
 

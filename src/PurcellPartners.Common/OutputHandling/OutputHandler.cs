@@ -22,5 +22,12 @@ namespace PurcellPartners.Common.OutputHandling
 
             Console.Write($"{promptMessage}:");
         }
+
+        public void WriteProcessingMessage()
+        {
+            var processingMessage = _ConfigurationSettingManager.GetValueByKey("ProcessingStarted") ?? "Please wait while we process your request";
+
+            Console.WriteLine(processingMessage);
+        }
     }
 }

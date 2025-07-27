@@ -9,5 +9,7 @@ namespace PurcellPartners.Common.OutputHandling
     public interface IOutputHandler
     {
         void WriteListPromptMessage();
+
+        void WriteProcessingMessage();
     }
 }
