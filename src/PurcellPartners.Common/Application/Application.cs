@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using PurcellPartners.Common.ConfigurationSetting;
 
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace PurcellPartners.Common.Application
 {
     public class Application : IApplication
@@ -27,7 +29,9 @@ namespace PurcellPartners.Common.Application
             var processingMessage = _ConfigurationSettingManager.GetValueByKey("ProcessingStarted") ?? "Please wait while we process your request";
             Console.WriteLine(processingMessage);
 
-            var inputList = RetrieveInputList(input);
+            var inputList = await RetrieveInputList(input);
+
+            var orderedList = await OrderInputList(inputList);
 
             Console.ReadLine();
         }
@@ -54,5 +58,7 @@ namespace PurcellPartners.Common.Application
 
             return Task.FromResult(returnList);
         }
+
+        public Task<List<int>> OrderInputList(List<int> inputList) => Task.FromResult(inputList.OrderBy(n => n).ToList());
     }
 }
